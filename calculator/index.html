@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Interactive JS Calculator Demo — practise DOM, Events, and Promises"
+    />
+    <title>JS Calculator Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- ===== Background blobs for visual depth ===== -->
+    <div class="bg-blob blob-1" aria-hidden="true"></div>
+    <div class="bg-blob blob-2" aria-hidden="true"></div>
+    <div class="bg-blob blob-3" aria-hidden="true"></div>
+
+    <main class="page-wrapper">
+      <!-- ===== Page heading ===== -->
+      <header class="page-header">
+        <h1 class="page-title">
+          <span class="title-icon">🧮</span> JS Calculator
+        </h1>
+        <p class="page-subtitle">
+          Practice DOM · Events · Promises · Functions
+        </p>
+      </header>
+
+      <!-- ===== Calculator card ===== -->
+      <section class="calculator" role="application" aria-label="Calculator">
+
+        <!-- ── Display area ── -->
+        <div class="display-wrapper">
+          <!-- Shows the ongoing expression (e.g. 12 + 7) -->
+          <div
+            id="expression-display"
+            class="expression-display"
+            aria-live="polite"
+            aria-label="Expression"
+          >
+            <!-- Filled by JS -->
+          </div>
+
+          <!-- Shows the current number / result -->
+          <div
+            id="main-display"
+            class="main-display"
+            role="status"
+            aria-live="polite"
+            aria-label="Result"
+          >
+            0
+          </div>
+
+          <!-- History badge — appears after = is pressed -->
+          <div
+            id="history-badge"
+            class="history-badge hidden"
+            aria-label="Last result"
+          ></div>
+        </div>
+
+        <!-- ── Button grid ── -->
+        <div class="btn-grid" role="group" aria-label="Calculator buttons">
+
+          <!-- Row 1: utility buttons -->
+          <button
+            id="btn-clear"
+            class="btn btn-utility btn-wide"
+            data-action="clear"
+            aria-label="Clear all"
+          >AC</button>
+
+          <button
+            id="btn-sign"
+            class="btn btn-utility"
+            data-action="sign"
+            aria-label="Toggle positive or negative"
+          >+/−</button>
+
+          <button
+            id="btn-percent"
+            class="btn btn-utility"
+            data-action="percent"
+            aria-label="Percent"
+          >%</button>
+
+          <button
+            id="btn-divide"
+            class="btn btn-operator"
+            data-action="operator"
+            data-value="÷"
+            aria-label="Divide"
+          >÷</button>
+
+          <!-- Row 2 -->
+          <button class="btn btn-number" data-action="digit" data-value="7" aria-label="7">7</button>
+          <button class="btn btn-number" data-action="digit" data-value="8" aria-label="8">8</button>
+          <button class="btn btn-number" data-action="digit" data-value="9" aria-label="9">9</button>
+          <button
+            id="btn-multiply"
+            class="btn btn-operator"
+            data-action="operator"
+            data-value="×"
+            aria-label="Multiply"
+          >×</button>
+
+          <!-- Row 3 -->
+          <button class="btn btn-number" data-action="digit" data-value="4" aria-label="4">4</button>
+          <button class="btn btn-number" data-action="digit" data-value="5" aria-label="5">5</button>
+          <button class="btn btn-number" data-action="digit" data-value="6" aria-label="6">6</button>
+          <button
+            id="btn-subtract"
+            class="btn btn-operator"
+            data-action="operator"
+            data-value="−"
+            aria-label="Subtract"
+          >−</button>
+
+          <!-- Row 4 -->
+          <button class="btn btn-number" data-action="digit" data-value="1" aria-label="1">1</button>
+          <button class="btn btn-number" data-action="digit" data-value="2" aria-label="2">2</button>
+          <button class="btn btn-number" data-action="digit" data-value="3" aria-label="3">3</button>
+          <button
+            id="btn-add"
+            class="btn btn-operator"
+            data-action="operator"
+            data-value="+"
+            aria-label="Add"
+          >+</button>
+
+          <!-- Row 5 -->
+          <button
+            id="btn-zero"
+            class="btn btn-number btn-wide"
+            data-action="digit"
+            data-value="0"
+            aria-label="0"
+          >0</button>
+
+          <button
+            id="btn-decimal"
+            class="btn btn-number"
+            data-action="decimal"
+            aria-label="Decimal point"
+          >.</button>
+
+          <button
+            id="btn-equals"
+            class="btn btn-equals"
+            data-action="equals"
+            aria-label="Equals"
+          >=</button>
+
+        </div><!-- /.btn-grid -->
+
+        <!-- ── JS Concepts legend ── -->
+        <div class="concepts-legend">
+          <span class="concept-tag" title="querySelector, getElementById, textContent…">DOM</span>
+          <span class="concept-tag" title="addEventListener, event.target, data-* attributes">Events</span>
+          <span class="concept-tag" title="async history save simulated with a Promise">Promises</span>
+          <span class="concept-tag" title="Arrow functions, closures, pure functions">Functions</span>
+          <span class="concept-tag" title="Template literals, destructuring, const/let">ES6+</span>
+        </div>
+
+      </section><!-- /.calculator -->
+
+      <!-- ===== History panel ===== -->
+      <aside class="history-panel" aria-label="Calculation history">
+        <h2 class="history-title">📋 History</h2>
+        <ul id="history-list" class="history-list" aria-live="polite">
+          <li class="history-empty">No calculations yet…</li>
+        </ul>
+        <button id="btn-clear-history" class="btn-clear-history">Clear history</button>
+      </aside>
+
+    </main><!-- /.page-wrapper -->
+
+    <script src="calculator.js"></script>
+  </body>
+</html>
