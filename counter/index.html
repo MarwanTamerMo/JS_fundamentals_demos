@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Counter Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <main class="page">
+
+      <header class="page-header">
+        <h1 class="page-title">JS Counter</h1>
+        <p class="page-subtitle">DOM · Promises · Events</p>
+      </header>
+
+      <section class="card">
+
+        <div class="step-row">
+          <label class="step-label" for="step-input">Step</label>
+          <input id="step-input" class="step-input" type="number" value="1" min="1" />
+        </div>
+
+        <div id="counter-display" class="counter-display">0</div>
+
+        <div id="status-msg" class="status-msg hidden"></div>
+
+        <div class="btn-row">
+          <button id="btn-decrement" class="btn btn-secondary" data-action="decrement">−</button>
+          <button id="btn-reset"     class="btn btn-ghost"     data-action="reset">Reset</button>
+          <button id="btn-increment" class="btn btn-primary"   data-action="increment">+</button>
+        </div>
+
+        <div id="milestone-badge" class="milestone-badge hidden"></div>
+
+      </section>
+
+      <aside class="log-panel">
+        <h2 class="log-title">📋 Log</h2>
+        <ul id="log-list" class="log-list">
+          <li class="log-empty">No actions yet…</li>
+        </ul>
+        <button id="btn-clear-log" class="btn-clear-log">Clear log</button>
+      </aside>
+
+    </main>
+
+    <script src="counter.js"></script>
+  </body>
+</html>

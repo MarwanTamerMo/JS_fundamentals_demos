@@ -70,7 +70,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow-x: hidden;
-  padding: 2rem 1rem;
+  padding: 32px 16px;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -125,7 +125,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 32px;
   width: 100%;
   max-width: 800px;
 }
@@ -136,7 +136,7 @@ body {
 }
 
 .page-title {
-  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-size: 42px;
   font-weight: 700;
   letter-spacing: -0.5px;
   background: linear-gradient(135deg, var(--clr-purple), var(--clr-pink), var(--clr-cyan));
@@ -158,8 +158,8 @@ body {
 }
 
 .page-subtitle {
-  margin-top: 0.4rem;
-  font-size: 0.9rem;
+  margin-top: 6px;
+  font-size: 14px;
   color: var(--clr-text-muted);
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -173,7 +173,7 @@ body {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-card);
-  padding: 1.4rem;
+  padding: 22px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow:
@@ -201,8 +201,8 @@ body {
   background: rgba(0, 0, 0, 0.35);
   border: 1px solid var(--clr-border);
   border-radius: 16px;
-  padding: 1rem 1.2rem 0.8rem;
-  margin-bottom: 1.2rem;
+  padding: 16px 19px 13px;
+  margin-bottom: 19px;
   min-height: 110px;
   display: flex;
   flex-direction: column;
@@ -215,7 +215,7 @@ body {
 
 .expression-display {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 14px;
   color: var(--clr-text-muted);
   min-height: 1.2em;
   word-break: break-all;
@@ -225,7 +225,7 @@ body {
 
 .main-display {
   font-family: var(--font-mono);
-  font-size: 2.6rem;
+  font-size: 42px;
   font-weight: 600;
   color: var(--clr-text-primary);
   text-align: right;
@@ -259,7 +259,7 @@ body {
 }
 
 .history-badge {
-  font-size: 0.7rem;
+  font-size: 11px;
   background: linear-gradient(135deg, var(--clr-purple), var(--clr-pink));
   color: #fff;
   padding: 2px 8px;
@@ -290,7 +290,7 @@ body {
   border: none;
   border-radius: var(--radius-btn);
   font-family: var(--font-ui);
-  font-size: 1.15rem;
+  font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   color: var(--clr-text-primary);
@@ -380,7 +380,7 @@ body {
   background: linear-gradient(135deg, var(--clr-eq-start), var(--clr-eq-end));
   box-shadow: 0 4px 20px rgba(168,85,247,0.4);
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 22px;
 }
 .btn-equals:hover {
   transform: translateY(-3px) scale(1.03);
@@ -398,11 +398,11 @@ body {
   flex-wrap: wrap;
   gap: 6px;
   justify-content: center;
-  margin-top: 1.2rem;
+  margin-top: 19px;
 }
 
 .concept-tag {
-  font-size: 0.7rem;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.5px;
   padding: 3px 10px;
@@ -428,17 +428,17 @@ body {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-card);
-  padding: 1.2rem;
+  padding: 19px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   animation: cardEntrance 0.7s 0.1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 .history-title {
-  font-size: 0.95rem;
+  font-size: 15px;
   font-weight: 600;
   color: var(--clr-text-muted);
-  margin-bottom: 0.8rem;
+  margin-bottom: 13px;
   letter-spacing: 0.5px;
 }
 
@@ -455,7 +455,7 @@ body {
 
 .history-list li {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 13px;
   color: var(--clr-text-primary);
   background: var(--clr-surface-2);
   border: 1px solid var(--clr-border);
@@ -474,7 +474,7 @@ body {
 .history-empty {
   color: var(--clr-text-muted) !important;
   font-family: var(--font-ui) !important;
-  font-size: 0.82rem !important;
+  font-size: 13px !important;
   font-style: italic;
   justify-content: center !important;
   background: none !important;
@@ -482,7 +482,7 @@ body {
 }
 
 .btn-clear-history {
-  margin-top: 0.8rem;
+  margin-top: 13px;
   width: 100%;
   padding: 8px;
   background: rgba(236,72,153,0.12);
@@ -490,7 +490,7 @@ body {
   border-radius: 10px;
   color: var(--clr-pink);
   font-family: var(--font-ui);
-  font-size: 0.8rem;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s;
@@ -523,5 +523,5 @@ body {
     --btn-size: 60px;
     --btn-gap: 8px;
   }
-  .main-display { font-size: 2rem; }
+  .main-display { font-size: 32px; }
 }

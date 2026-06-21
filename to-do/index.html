@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS To-Do Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <main class="page">
+      <header class="page-header">
+        <h1 class="page-title">JS To-Do</h1>
+        <p class="page-subtitle">DOM · Arrays · LocalStorage</p>
+      </header>
+
+      <section class="card">
+        <form id="todo-form" class="todo-form">
+          <input
+            type="text"
+            id="todo-input"
+            class="todo-input"
+            placeholder="What needs to be done?"
+            autocomplete="off"
+            required
+          />
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+        <div class="todo-stats">
+          <span id="task-count">0 tasks</span>
+          <button id="btn-clear-completed" class="btn btn-ghost">Clear Completed</button>
+        </div>
+
+        <ul id="todo-list" class="todo-list">
+          <!-- JS will inject list items here -->
+        </ul>
+      </section>
+    </main>
+
+    <script src="todo.js"></script>
+  </body>
+</html>

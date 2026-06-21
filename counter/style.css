@@ -1,0 +1,404 @@
+/* style.css - JS Counter Demo */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: #100d1f;
+  color: #f1f5f9;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+/* background decorative blobs */
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+  animation: blobDrift 10s ease-in-out infinite alternate;
+}
+
+.blob-1 {
+  width: 420px;
+  height: 420px;
+  background-color: #7c3aed;
+  top: -100px;
+  left: -100px;
+}
+
+.blob-2 {
+  width: 320px;
+  height: 320px;
+  background-color: #3b0764;
+  bottom: -60px;
+  right: -60px;
+  animation-duration: 13s;
+  animation-delay: -4s;
+}
+
+@keyframes blobDrift {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(25px, 18px); }
+}
+
+/* page layout */
+.page {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  width: 100%;
+  max-width: 680px;
+}
+
+/* header */
+.page-header {
+  text-align: center;
+}
+
+.page-title {
+  font-size: 35px;
+  font-weight: 700;
+  color: #a78bfa;
+}
+
+.page-subtitle {
+  margin-top: 5px;
+  font-size: 13px;
+  color: #94a3b8;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* main card */
+.card {
+  width: 100%;
+  max-width: 360px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 26px;
+  padding: 32px 26px 26px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  animation: cardIn 0.5s ease both;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* step input row */
+.step-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-end;
+}
+
+.step-label {
+  font-size: 12px;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.step-input {
+  width: 58px;
+  padding: 4px 8px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #f1f5f9;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  text-align: center;
+  outline: none;
+}
+
+.step-input:focus {
+  border-color: #8b5cf6;
+}
+
+/* hide the number input arrows */
+.step-input::-webkit-inner-spin-button,
+.step-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+/* the big counter number */
+.counter-display {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 80px;
+  font-weight: 700;
+  color: #f1f5f9;
+  line-height: 1;
+  transition: color 0.3s;
+}
+
+/* JS adds one of these classes to change the color */
+.counter-display.positive { color: #a78bfa; }
+.counter-display.negative { color: #f87171; }
+.counter-display.zero     { color: #f1f5f9; }
+
+/* JS adds "pop" class to trigger this animation */
+.counter-display.pop {
+  animation: popIn 0.2s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.85); }
+  to   { transform: scale(1); }
+}
+
+/* JS adds "shake" class to trigger this animation */
+.counter-display.shake {
+  animation: shake 0.35s ease;
+}
+
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-7px); }
+  75%  { transform: translateX(7px); }
+  100% { transform: translateX(0); }
+}
+
+/* status message shown after async save */
+.status-msg {
+  font-size: 12px;
+  color: #a78bfa;
+  background-color: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  border-radius: 8px;
+  padding: 4px 12px;
+  animation: fadeIn 0.3s ease;
+}
+
+.status-msg.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* buttons row */
+.btn-row {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.btn {
+  border: none;
+  border-radius: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.12s, background-color 0.18s;
+  /* needed so the ripple ::after pseudo-element stays inside the button */
+  position: relative;
+  overflow: hidden;
+}
+
+/* ripple flash - JS adds/removes the "ripple" class */
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  opacity: 0;
+  border-radius: inherit;
+}
+
+.btn.ripple::after {
+  animation: ripple 0.38s ease-out;
+}
+
+@keyframes ripple {
+  from { transform: scale(0); opacity: 0.45; }
+  to   { transform: scale(2.8); opacity: 0; }
+}
+
+/* + button */
+.btn-primary {
+  width: 68px;
+  height: 68px;
+  font-size: 29px;
+  background-color: #7c3aed;
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(124, 58, 237, 0.45);
+}
+
+.btn-primary:hover {
+  background-color: #8b5cf6;
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: scale(0.92);
+}
+
+/* - button */
+.btn-secondary {
+  width: 68px;
+  height: 68px;
+  font-size: 29px;
+  background-color: rgba(127, 29, 29, 0.45);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.2);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(127, 29, 29, 0.7);
+  transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+  transform: scale(0.92);
+}
+
+/* reset button */
+.btn-ghost {
+  padding: 0 18px;
+  height: 42px;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-ghost:hover {
+  color: #f1f5f9;
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.btn-ghost:active {
+  transform: scale(0.95);
+}
+
+/* milestone badge */
+.milestone-badge {
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #7c3aed;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 20px;
+  animation: badgePop 0.35s ease;
+}
+
+.milestone-badge.hidden {
+  display: none;
+}
+
+@keyframes badgePop {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* log panel */
+.log-panel {
+  width: 100%;
+  max-width: 360px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 26px;
+  padding: 19px;
+  backdrop-filter: blur(18px);
+}
+
+.log-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 13px;
+}
+
+.log-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.log-list li {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #f1f5f9;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  animation: fadeIn 0.22s ease;
+}
+
+.log-list li .log-value {
+  color: #a78bfa;
+  font-weight: 600;
+}
+
+.log-empty {
+  color: #94a3b8;
+  font-style: italic;
+  justify-content: center;
+  background: none !important;
+  border: none !important;
+}
+
+.btn-clear-log {
+  margin-top: 13px;
+  width: 100%;
+  padding: 7px;
+  background-color: rgba(91, 33, 182, 0.12);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  border-radius: 9px;
+  color: #a78bfa;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-clear-log:hover {
+  background-color: rgba(91, 33, 182, 0.28);
+}
+
+/* side by side on wider screens */
+@media (min-width: 640px) {
+  .page {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
